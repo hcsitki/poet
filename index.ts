@@ -1,32 +1,18 @@
 import { getData } from "./apiClient";
 
-const fetchAuthors = async () => {
+const fetchData = async (endpoint: string) => {
     try {
-        const response = await getData('/author');
+        const response = await getData(endpoint);
         const data = await response.json();
-        const authors = data["authors"]
+        const authors = data[Object.keys(data)[0]]
         authors.forEach(a => {
             console.log(a);
         })
-    } catch (error) {
-        console.error('Error fetching authors: ', error);
-    }
-}
-
-const fetchTitles = async () => {
-    try {
-        const response = await getData('/title');
-        const data = await response.json();
-        const authors = data["titles"]
-        authors.forEach(a => {
-            console.log(a);
-        })
-        // console.log(data);
         
     } catch (error) {
-        console.error('Error fetching titles: ', error);
+        console.error(`Error fetching ${endpoint.slice(1)}s: ${error}`);
     }
 }
 
-fetchTitles();
-// fetchAuthors();
+// fetchData('/title')
+fetchData('/author')

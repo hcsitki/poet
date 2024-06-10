@@ -10,32 +10,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const apiClient_1 = require("./apiClient");
-const fetchAuthors = () => __awaiter(void 0, void 0, void 0, function* () {
+const fetchData = (endpoint) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const response = yield (0, apiClient_1.getData)('/author');
+        const response = yield (0, apiClient_1.getData)(endpoint);
         const data = yield response.json();
-        const authors = data["authors"];
+        const authors = data[Object.keys(data)[0]];
         authors.forEach(a => {
             console.log(a);
         });
     }
     catch (error) {
-        console.error('Error fetching authors: ', error);
+        console.error(`Error fetching ${endpoint.slice(1)}s: ${error}`);
     }
 });
-const fetchTitles = () => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const response = yield (0, apiClient_1.getData)('/title');
-        const data = yield response.json();
-        const authors = data["titles"];
-        authors.forEach(a => {
-            console.log(a);
-        });
-        // console.log(data);
-    }
-    catch (error) {
-        console.error('Error fetching titles: ', error);
-    }
-});
-fetchTitles();
-// fetchAuthors();
+// fetchData('/title')
+fetchData('/author');
