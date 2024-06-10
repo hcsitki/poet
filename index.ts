@@ -1,14 +1,16 @@
 import { getData } from "./apiClient";
 
-const fetchData = async () => {
+const fetchAuthors = async () => {
     try {
         const response = await getData('/author');
         const data = await response.json();
-        console.log(data);
-        
+        const authors = data["authors"]
+        authors.forEach(a => {
+            console.log(a);
+        })
     } catch (error) {
-        console.error('Error fetching data: ', error);
+        console.error('Error fetching authors: ', error);
     }
-};
+}
 
-fetchData();
+fetchAuthors();

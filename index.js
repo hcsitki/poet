@@ -10,14 +10,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const apiClient_1 = require("./apiClient");
-const fetchData = () => __awaiter(void 0, void 0, void 0, function* () {
+const fetchAuthors = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const response = yield (0, apiClient_1.getData)('/author');
         const data = yield response.json();
-        console.log(data);
+        const authors = data["authors"];
+        authors.forEach(a => {
+            console.log(a);
+        });
     }
     catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching authors: ', error);
     }
 });
-fetchData();
+fetchAuthors();

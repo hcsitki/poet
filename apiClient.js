@@ -21,7 +21,7 @@ const getData = (endpoint) => __awaiter(void 0, void 0, void 0, function* () {
             },
         });
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error(`Error, response status: ${response.status}`);
         }
         return response;
     }
