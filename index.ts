@@ -13,4 +13,20 @@ const fetchAuthors = async () => {
     }
 }
 
-fetchAuthors();
+const fetchTitles = async () => {
+    try {
+        const response = await getData('/title');
+        const data = await response.json();
+        const authors = data["titles"]
+        authors.forEach(a => {
+            console.log(a);
+        })
+        // console.log(data);
+        
+    } catch (error) {
+        console.error('Error fetching titles: ', error);
+    }
+}
+
+fetchTitles();
+// fetchAuthors();

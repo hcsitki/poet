@@ -23,4 +23,19 @@ const fetchAuthors = () => __awaiter(void 0, void 0, void 0, function* () {
         console.error('Error fetching authors: ', error);
     }
 });
-fetchAuthors();
+const fetchTitles = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const response = yield (0, apiClient_1.getData)('/title');
+        const data = yield response.json();
+        const authors = data["titles"];
+        authors.forEach(a => {
+            console.log(a);
+        });
+        // console.log(data);
+    }
+    catch (error) {
+        console.error('Error fetching titles: ', error);
+    }
+});
+fetchTitles();
+// fetchAuthors();
