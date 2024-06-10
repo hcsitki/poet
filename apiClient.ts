@@ -8,7 +8,7 @@ export const getData = async (endpoint: string): Promise<Response> => {
                 'Content-Type': 'application/json',
             },
         });
-        if (!response.ok) {
+        if (response.status !== 200) {
             throw new Error(`Error, response status: ${response.status}`);
         }
         return response;

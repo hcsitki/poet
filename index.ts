@@ -8,9 +8,11 @@ const fetchData = async (endpoint: string) => {
         authors.forEach(a => {
             console.log(a);
         })
+        // console.log("Headers: ", response.headers);
+        console.log(`Status ${response.status}: ${response.statusText}`);
         
-    } catch (error) {
-        console.error(`Error fetching ${endpoint.slice(1)}s: ${error}`);
+    } catch {
+        console.error('Error fetching data');
     }
 }
 

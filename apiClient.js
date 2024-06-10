@@ -20,7 +20,7 @@ const getData = (endpoint) => __awaiter(void 0, void 0, void 0, function* () {
                 'Content-Type': 'application/json',
             },
         });
-        if (!response.ok) {
+        if (response.status !== 200) {
             throw new Error(`Error, response status: ${response.status}`);
         }
         return response;

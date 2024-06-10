@@ -18,9 +18,11 @@ const fetchData = (endpoint) => __awaiter(void 0, void 0, void 0, function* () {
         authors.forEach(a => {
             console.log(a);
         });
+        // console.log("Headers: ", response.headers);
+        console.log(`Status: ${response.status}: ${response.statusText}`);
     }
-    catch (error) {
-        console.error(`Error fetching ${endpoint.slice(1)}s: ${error}`);
+    catch (_a) {
+        console.error('Error fetching data');
     }
 });
 // fetchData('/title')
